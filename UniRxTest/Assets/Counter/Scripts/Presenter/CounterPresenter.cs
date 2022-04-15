@@ -13,19 +13,20 @@ namespace Counter.Presenter
 {
     public class CounterPresenter : MonoBehaviour
     {
-
+        [SerializeField]
         private CountNumberView _countNumberView;
+        [SerializeField]
         private CountButtonPushView _countButtonPushView;
         private CounterModel _counterModel;
 
         [Inject]
         public void Construct(
-            CountNumberView countNumberView,
-            CountButtonPushView CountButtonPushView,
+            //CountNumberView countNumberView,
+            //CountButtonPushView CountButtonPushView,
             CounterModel counterModel)
         {
-            _countNumberView = countNumberView;
-            _countButtonPushView = CountButtonPushView;
+            //_countNumberView = countNumberView;
+            //_countButtonPushView = CountButtonPushView;
             _counterModel = counterModel;
         }
 
