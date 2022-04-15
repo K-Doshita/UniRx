@@ -1,18 +1,32 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CounterModel : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+using UniRx;
 
-    // Update is called once per frame
-    void Update()
+namespace Counter.Model
+{
+    public class CounterModel
     {
-        
+        private int _count = 0;
+
+        private Subject<int> countValueSubject = new Subject<int>();
+
+        public void OnCountValue()
+        {
+            AddCount();
+            countValueSubject.OnNext(_count);
+        }
+
+        public IObservable<int> OnCountValueObservable()
+        {
+            return countValueSubject.AsObservable();
+        }
+
+        private void AddCount()
+        {
+            _count++;
+        }
     }
 }
